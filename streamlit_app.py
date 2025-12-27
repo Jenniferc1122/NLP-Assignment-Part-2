@@ -22,8 +22,15 @@ page_bg_img = """
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
-nltk.download ('stopwords")
+import nltk
 from nltk.corpus import stopwords
+
+# Download only if not already present
+try:
+    stopwords.words('english')
+except LookupError:
+    nltk.download('stopwords')
+
 from nltk.stem import PorterStemmer
 
 stop_words = set(stopwords.words('english'))
