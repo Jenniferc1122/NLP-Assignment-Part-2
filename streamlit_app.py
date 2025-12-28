@@ -98,7 +98,7 @@ with st.expander("Analyse CSV"):
             df['prediction'] = [label_map[p] for p in preds]
 
             st.write("Prediction results:")
-            st.write(df[['Review_text', 'Prediction']].head())
+            st.write(df[['review_text', 'Prediction']].head())
 
         else:
             st.error("CSV must contain a 'review_text' column")
