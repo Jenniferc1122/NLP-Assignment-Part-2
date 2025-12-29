@@ -3,6 +3,7 @@ import streamlit as st
 import cleantext
 import re
 import nltk
+import joblib
 
 #--- Streamlit UI ---
 page_bg_img = """
@@ -50,12 +51,13 @@ def preprocess_text(text):
     
     return " ".join(tokens)
 
+@st.cache_resource
+def load_model():
+    model = joblib.load("sentiment_model.joblib")
+    vectorizer = joblib.load("tfidf.joblib")
+    return model, vectorizer
 
-with open("sentiment_model.pkl", "rb") as f:
-    model = pickle.load(f)
-
-with open("tfidf.pkl", "rb") as f:
-    vectorizer = pickle.load(f)
+model, vectorizer = load_model()
 
 label_map = {
     0: "Negative 😞",
