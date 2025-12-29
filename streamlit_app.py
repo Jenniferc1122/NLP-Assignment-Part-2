@@ -10,6 +10,11 @@ def load_nltk():
     nltk.download('stopwords')
     nltk.download('punkt')
 
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
 load_nltk()
 
 #--- Streamlit UI ---
@@ -49,6 +54,8 @@ def preprocess_text(text):
     text = text.lower()
     # remove punctuation & special characters
     text = re.sub(r'[^a-z\s]', '', text)
+
+    return text
     
     # tokenisation
     # tokens = nltk.word_tokenize(text)
