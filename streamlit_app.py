@@ -5,6 +5,13 @@ import re
 import nltk
 import joblib
 
+@st.cache_resource
+def load_nltk():
+    nltk.download('stopwords')
+    nltk.download('punkt')
+
+load_nltk()
+
 #--- Streamlit UI ---
 page_bg_img = """
 <style>
@@ -44,10 +51,10 @@ def preprocess_text(text):
     text = re.sub(r'[^a-z\s]', '', text)
     
     # tokenisation
-    tokens = nltk.word_tokenize(text)
+    # tokens = nltk.word_tokenize(text)
     
     # remove stopwords & stemming
-    tokens = [stemmer.stem(word) for word in tokens if word not in stop_words]
+    # tokens = [stemmer.stem(word) for word in tokens if word not in stop_words]
     
     return " ".join(tokens)
 
@@ -100,7 +107,7 @@ with st.expander("Analyse CSV"):
             df['prediction'] = [label_map[p] for p in preds]
 
             st.write("Prediction results:")
-            st.write(df[['review_text', 'Prediction']].head())
+            st.write(df[['review_text', 'prediction']].head())
 
         else:
             st.error("CSV must contain a 'review_text' column")
