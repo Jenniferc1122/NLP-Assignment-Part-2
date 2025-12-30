@@ -54,19 +54,6 @@ with st.expander("📂 Analyse CSV"):
     st.markdown("### Try a sample or upload your own CSV")
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("Try with Sample CSV"):
-            df = pd.read_csv(sample_csv_url)
-            
-            if 'review_text' not in df.columns:
-                st.error("Sample CSV must contain 'review_text' column")
-            else:
-                df['clean_review'] = df['review_text'].astype(str).apply(preprocess_text)
-                preds = model.predict(vectorizer.transform(df['clean_review']))
-                df['prediction'] = [label_map[p] for p in preds]
-                st.success("Sample file analysed successfully!")
-                st.dataframe(df[['review_text', 'prediction']].head(10))
-
-    with col2:
         uploaded_file = st.file_uploader("Upload CSV", type="csv")
         if uploaded_file:
             df = pd.read_csv(uploaded_file)
@@ -78,5 +65,17 @@ with st.expander("📂 Analyse CSV"):
                 preds = model.predict(vectorizer.transform(df['clean_review']))
                 df['prediction'] = [label_map[p] for p in preds]
     
+                st.dataframe(df[['review_text', 'prediction']].head(10))
+    with col2:
+        if st.button("Try with Sample CSV"):
+            df = pd.read_csv(sample_csv_url)
+            
+            if 'review_text' not in df.columns:
+                st.error("Sample CSV must contain 'review_text' column")
+            else:
+                df['clean_review'] = df['review_text'].astype(str).apply(preprocess_text)
+                preds = model.predict(vectorizer.transform(df['clean_review']))
+                df['prediction'] = [label_map[p] for p in preds]
+                st.success("Sample file analysed successfully!")
                 st.dataframe(df[['review_text', 'prediction']].head(10))
 
