@@ -52,8 +52,8 @@ with st.expander("✍️ Input Review"):
 
 with st.expander("📂 Analyse CSV"):
     st.markdown("### Try a sample or upload your own CSV")
-    row1, row2 = st.rows(2)
-    with row1:
+    col1, col2 = st.columns(2)
+    with col1:
         if st.button("Try with Sample CSV"):
             df = pd.read_csv(sample_csv_url)
             
@@ -66,7 +66,7 @@ with st.expander("📂 Analyse CSV"):
                 st.success("Sample file analysed successfully!")
                 st.dataframe(df[['review_text', 'prediction']].head(10))
 
-    with row2:
+    with col2:
         uploaded_file = st.file_uploader("Upload CSV", type="csv")
         if uploaded_file:
             df = pd.read_csv(uploaded_file)
