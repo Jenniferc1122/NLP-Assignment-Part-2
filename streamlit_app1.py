@@ -40,7 +40,7 @@ label_map = {
 # ---------------- App ----------------
 st.header("🎮 Sentiment Analysis for Gaming Reviews")
 
-sample_csv_url = 
+sample_csv_url = https://github.com/Jenniferc1122/NLP-Assignment-Part-2/blob/master/Review%20copy.csv
 
 with st.expander("✍️ Input Review"):
     user_input = st.text_area("Enter your review:")
