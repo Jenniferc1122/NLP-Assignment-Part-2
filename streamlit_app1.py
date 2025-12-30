@@ -51,7 +51,8 @@ with st.expander("✍️ Input Review"):
         st.success(f"Predicted Sentiment: **{label_map[pred]}**")
 
 with st.expander("📂 Analyse CSV"):
-
+    st.markdown("### Try a sample or upload your own CSV")
+    col1, col2 = st.columns(2)
     with col1:
         if st.button("Try with Sample CSV"):
             df = pd.read_csv(sample_url)
