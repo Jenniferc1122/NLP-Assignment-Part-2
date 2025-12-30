@@ -61,3 +61,13 @@ with st.expander("📂 Analyse CSV"):
             df['prediction'] = [label_map[p] for p in preds]
 
             st.dataframe(df[['review_text', 'prediction']].head(10))
+
+    st.markdown("### 🧪 Try with a sample file")
+
+    st.download_button(
+        label="📥 Download Sample CSV Template",
+        data=csv_buffer.getvalue(),
+        file_name="sample_reviews.csv",
+        mime="text/csv"
+    )
+
