@@ -17,6 +17,15 @@ page_bg_img = """
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
+# ---------------- Show f1 Score ----------------
+
+@st.cache_resource
+def load_metrics():
+    f1 = joblib.load("f1_score.joblib")
+    return f1
+
+f1_score_value = load_metrics()
+
 # ---------------- Preprocessing ----------------
 def preprocess_text(text):
     text = text.lower()
@@ -42,6 +51,12 @@ label_map = {
 st.header("🎮 Sentiment Analysis for Gaming Reviews")
 
 sample_csv_url = "https://raw.githubusercontent.com/Jenniferc1122/NLP-Assignment-Part-2/refs/heads/master/Review%20copy.csv"
+
+st.subheader("📊 Model Performance")
+st.metric(
+    label="F1 Score",
+    value=f"{f1_score_value:.3f}"
+)
 
 with st.expander("✍️ Input Review"):
     user_input = st.text_area("Enter your review:")
