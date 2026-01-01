@@ -53,7 +53,7 @@ label_map = {
 # ---------------- App ----------------
 st.header("🎮 Sentiment Analysis for Gaming Reviews")
 
-sample_csv_url = "https://raw.githubusercontent.com/Jenniferc1122/NLP-Assignment-Part-2/refs/heads/master/Review%20copy.csv"
+sample_csv_url = "https://raw.githubusercontent.com/Jenniferc1122/NLP-Assignment-Part-2/refs/heads/master/samplereview6.csv"
 
 st.subheader("📊 Model Performance")
 
