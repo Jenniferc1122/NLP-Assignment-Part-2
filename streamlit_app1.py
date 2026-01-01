@@ -11,6 +11,7 @@ page_bg_img = """
 [data-testid="stAppViewContainer"] {
     background-image: url("https://images.unsplash.com/photo-1732132966168-34cf0a39b840?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     background-size: cover;
+    opacity: 0.7;
 }
 </style>
 """
