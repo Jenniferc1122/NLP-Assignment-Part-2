@@ -13,6 +13,9 @@ page_bg_img = """
     background-size: cover;
     opacity: 0.7;
 }
+* {
+    color: white !important;
+}
 </style>
 """
 st.markdown(page_bg_img, unsafe_allow_html=True)
