@@ -21,7 +21,7 @@ st.markdown(page_bg_img, unsafe_allow_html=True)
 
 @st.cache_resource
 def load_metrics():
-    f1 = joblib.load("f1_score.joblib")
+    f1 = joblib.load("model_f1_score.joblib")
     return f1
 
 f1_score_value = load_metrics()
