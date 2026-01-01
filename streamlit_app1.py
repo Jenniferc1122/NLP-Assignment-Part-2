@@ -53,9 +53,10 @@ st.header("🎮 Sentiment Analysis for Gaming Reviews")
 sample_csv_url = "https://raw.githubusercontent.com/Jenniferc1122/NLP-Assignment-Part-2/refs/heads/master/Review%20copy.csv"
 
 st.subheader("📊 Model Performance")
+
 st.metric(
     label="F1 Score",
-    value=f"{f1_score_value:.3f}"
+    value=f"{f1_score_value * 100:.2f}%"
 )
 
 with st.expander("✍️ Input Review"):
