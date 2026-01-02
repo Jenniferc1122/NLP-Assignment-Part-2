@@ -94,7 +94,7 @@ with st.expander("📂 Analyse CSV"):
             st.error("Sample CSV must contain 'review_text' column")
         else:
             df['clean_review'] = df['review_text'].astype(str).apply(preprocess_text)
-            preds = model.predict(['clean_review']))
+            preds = model.predict(['clean_review'])
             df['prediction'] = [label_map[p] for p in preds]
             st.success("Sample file analysed successfully!")
             st.dataframe(df[['review_text', 'prediction']].head(10))
