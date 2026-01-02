@@ -38,11 +38,10 @@ def preprocess_text(text):
 # ---------------- Load Model ----------------
 @st.cache_resource
 def load_model():
-    model = joblib.load("sentiment_model.joblib")
-    vectorizer = joblib.load("tfidf.joblib")
-    return model, vectorizer
+    model = joblib.load("final_sentiment_model.joblib")
+    return model
 
-model, vectorizer = load_model()
+model = load_model()
 
 label_map = {
     0: "Negative 😞",
@@ -66,8 +65,7 @@ with st.expander("✍️ Input Review"):
     user_input = st.text_area("Enter your review:")
     if user_input:
         clean_text = preprocess_text(user_input)
-        vec = vectorizer.transform([clean_text])
-        pred = model.predict(vec)[0]
+        pred = model.predict([clean_text])[0]
         st.success(f"Predicted Sentiment: **{label_map[pred]}**")
 
 with st.expander("📂 Analyse CSV"):
@@ -81,7 +79,7 @@ with st.expander("📂 Analyse CSV"):
             st.error("CSV must contain 'review_text' column")
         else:
             df['clean_review'] = df['review_text'].astype(str).apply(preprocess_text)
-            preds = model.predict(vectorizer.transform(df['clean_review']))
+            preds = model.predict(['clean_review']))
             df['prediction'] = [label_map[p] for p in preds]
 
             st.dataframe(df[['review_text', 'prediction']].head(10))
@@ -96,7 +94,7 @@ with st.expander("📂 Analyse CSV"):
             st.error("Sample CSV must contain 'review_text' column")
         else:
             df['clean_review'] = df['review_text'].astype(str).apply(preprocess_text)
-            preds = model.predict(vectorizer.transform(df['clean_review']))
+            preds = model.predict(['clean_review']))
             df['prediction'] = [label_map[p] for p in preds]
             st.success("Sample file analysed successfully!")
             st.dataframe(df[['review_text', 'prediction']].head(10))
