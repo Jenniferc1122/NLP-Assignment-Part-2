@@ -8,10 +8,31 @@ st.set_page_config(page_title="Sentiment Analysis", layout="centered")
 
 page_bg_img = """
 <style>
+/* Background image on the app container with a dark overlay for contrast */
 [data-testid="stAppViewContainer"] {
+    position: relative;
     background-image: url("https://images.unsplash.com/photo-1732132966168-34cf0a39b840?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     background-size: cover;
-    
+    background-position: center;
+    color: #ffffff; /* default text color for contrast */
+}
+
+/* Overlay to darken the background and improve readability */
+[data-testid="stAppViewContainer"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55); /* adjust alpha to make it lighter/darker */
+    z-index: 0;
+    border-radius: 0;
+}
+
+/* Make sure the app content sits above the overlay */
+[data-testid="stMain"] > div {
+    position: relative;
+    z-index: 1;
+}
+
 /* Expander header */
 div[data-testid="stExpander"] summary {
     background-color: #2b2b2b !important;
@@ -28,9 +49,45 @@ div[data-testid="stExpander"] div[role="region"] {
     padding: 10px;
 }
 
-/* Remove default border */
+/* Remove default border for expander */
 div[data-testid="stExpander"] {
     border: none;
+}
+
+/* Text input / textarea: light background and dark text so typed text is visible */
+textarea,
+.stTextArea > div > div > textarea,
+.stTextInput > div > input {
+    background-color: rgba(255,255,255,0.94) !important;
+    color: #000000 !important;
+    border-radius: 8px !important;
+}
+
+/* File uploader button and regular buttons: clearer styling */
+button[title],
+.stButton>button {
+    background-color: #0d6efd !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+/* Metric text: make sure it is visible */
+.stMetricValue, .stMetricLabel, [data-testid="metric-container"] {
+    color: #ffffff !important;
+}
+
+/* Dataframe/card backgrounds (make tables easier to read) */
+.stDataFrameContainer,
+div[data-testid="stDataFrame"] {
+    background-color: rgba(255,255,255,0.95) !important;
+    color: #000000 !important;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+/* Smaller visual tweaks */
+h1, h2, h3, h4, .css-1v0mbdj, .css-1v0mbdj * {
+    color: #ffffff !important;
 }
 </style>
 """
