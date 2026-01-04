@@ -15,6 +15,9 @@ page_bg_img = """
     background-size: cover;
 }
 
+body {
+    color: #000000 !important; /* Targets most body text */
+}
 }
 [data-testid="stHeader"] {
     background-color: rgba(0,0,0,0)
