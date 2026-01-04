@@ -19,9 +19,6 @@ page_bg_img = """
 [data-testid="stHeader"] {
     background-color: rgba(0,0,0,0)
 }
-[data-testid="stExpander"] {
-    background-color: rgba(0,0,0,0)
-}
 
 </style>
 """
