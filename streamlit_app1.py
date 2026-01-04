@@ -14,9 +14,12 @@ page_bg_img = """
     background-image: url("https://free-vectors.net/_ph/6/805542910.jpg");
     background-size: cover;
 }
-
-body {
-    color: #000000 !important; /* Targets most body text */
+[data-testid="stAppViewContainer"] {
+    color: black;
+}
+*
+{
+    color: black;
 }
 }
 [data-testid="stHeader"] {
