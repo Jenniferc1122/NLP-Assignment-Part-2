@@ -16,6 +16,9 @@ page_bg_img = """
 }
 * { color: white !important; 
 }
+[data-testid="stHeader"] {
+    background-color: rgba(0,0,0,0)
+}
 
 </style>
 """
