@@ -11,10 +11,10 @@ page_bg_img = """
 /* Background image on the app container with a dark overlay for contrast */
 [data-testid="stAppViewContainer"] {
     position: relative;
-    background-image: url("https://images.unsplash.com/photo-1732132966168-34cf0a39b840?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-image: url("https://free-vectors.net/_ph/6/805542910.jpg");
     background-size: cover;
 }
-* { color: white !important; 
+
 }
 [data-testid="stHeader"] {
     background-color: rgba(0,0,0,0)
