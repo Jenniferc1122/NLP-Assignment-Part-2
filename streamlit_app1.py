@@ -163,12 +163,12 @@ with tab2:
 
     with st.expander("⚠️ Limitations and Future Improvements"):
         st.markdown("""
-        Current Limitations
+        **Current Limitations**
         - Unable to predict sentiment of all emojis due to the limited emoji content in the training data.
         - Sarcasm detection.
         - Field specific, weaker sentiment prediction when it is used to predict sentiment in other field.
 
-        Future Improvement
+        **Future Improvement**
         - Explore Deep Learning models to improve sentiment prediction performance.
         """)
 
