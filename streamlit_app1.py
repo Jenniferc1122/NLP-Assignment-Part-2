@@ -2,6 +2,7 @@ import streamlit as st
 import re
 import joblib
 import pandas as pd
+import emoji
 
 # ---------------- UI ----------------
 st.set_page_config(page_title="Sentiment Analysis", layout="centered")
