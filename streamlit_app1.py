@@ -116,14 +116,49 @@ with tab2:
     # -----------------------------
     # WORKFLOW STEPS
     # -----------------------------
-    with st.expander("Step 1 – Data Preprocessing"):
+    with st.expander("Step 1 – Text Preprocessing"):
         st.markdown("""
-        - Raw corpus text is cleaned and normalised.
         - Text is converted to lowercase to ensure consistency.
-        - The corpus is tokenised into individual words.
-        - A vocabulary of valid words is created.
-        - Word frequency statistics are computed.
-        - Bigram frequencies are generated to capture contextual patterns.
+        - Emoji is converted to text form.
+        - Puctuations, special characters and extra white spaces are removed.
         """)
+
+    with st.expander("Step 2 – Data Labelling"):
+        st.markdown("""
+        - Label encoding to convert sentiment category into numerical.
+            - Positive reviews are labelled as 2.
+            - Neutral reviews are labelled as 1.
+            - Negative reviews are labelled as 0.
+        """)
+
+     with st.expander("Step 3 – Data Splitting"):
+        st.markdown("""
+        - 30% of the data is used for training.
+        - 70% of the data is used for testing.
+        """)
+
+      with st.expander("Step 4 – Model Training and Hyperparameter Tuning"):
+        st.markdown("""
+        - Pipeline is created to combine TF-IDF with Linear SVC into a single workflow.
+        - Hyperparameter tuning is performed using RandomizedSearchCV to find the best model parameters.
+        """)
+
+    with st.expander("Step 5 – Model Evaluation"):
+        st.markdown("""
+        - The final model is evaluated using F1 score metric.
+        - Classification report is generated to assess model performance across different sentiment categories.
+        """)
+
+    with st.expander("Step 6 – Model Saving"):
+        st.markdown("""
+        - The best performing model is saved using Joblib for streamlit integration.
+        """)
+
+
+
+
+
+    
+        
 
 
