@@ -172,6 +172,7 @@ with tab2:
         - Unable to predict sentiment of all emojis due to the limited emoji content in the training data.
         - Sarcasm detection.
         - Field specific, weaker sentiment prediction when it is used to predict sentiment in other field.
+        - Only applicable to reviews in English.
 
         **Future Improvement**
         - Explore Deep Learning models to improve sentiment prediction performance.
