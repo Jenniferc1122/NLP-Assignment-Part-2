@@ -61,7 +61,7 @@ sample_csv_url = "https://raw.githubusercontent.com/Jenniferc1122/NLP-Assignment
 
 tab1, tab2 = st.tabs([
     "✍️ Sentiment Analyser",
-    "📖 System Workflow")]
+    "📖 System Workflow"])
 
 with tab1:
     st.subheader("📊 Model Performance")
