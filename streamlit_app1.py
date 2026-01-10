@@ -131,13 +131,13 @@ with tab2:
             - Negative reviews are labelled as 0.
         """)
 
-     with st.expander("Step 3 – Data Splitting"):
+    with st.expander("Step 3 – Data Splitting"):
         st.markdown("""
         - 30% of the data is used for training.
         - 70% of the data is used for testing.
         """)
 
-      with st.expander("Step 4 – Model Training and Hyperparameter Tuning"):
+    with st.expander("Step 4 – Model Training and Hyperparameter Tuning"):
         st.markdown("""
         - Pipeline is created to combine TF-IDF with Linear SVC into a single workflow.
         - Hyperparameter tuning is performed using RandomizedSearchCV to find the best model parameters.
