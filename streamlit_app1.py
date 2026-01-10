@@ -78,6 +78,8 @@ with tab1:
         label="F1 Score",
         value=f"{f1_score_value * 100:.2f}%"
     )
+
+    # ---------------- Function to do single sentiment prediction ----------------
     
     with st.expander("✍️ Input Review"):
         user_input = st.text_area("Enter your review:")
@@ -85,6 +87,8 @@ with tab1:
             clean_text = preprocess_text(user_input)
             pred = model.predict([clean_text])[0]
             st.success(f"Predicted Sentiment: **{label_map[pred]}**")
+
+    # ---------------- Function to upload review in bulk with CSV ----------------
     
     with st.expander("📂 Analyse CSV"):
         st.markdown("### Try a sample or upload your own CSV")
@@ -102,9 +106,10 @@ with tab1:
     
                 st.dataframe(df[['review_text', 'prediction']].head(10))
     
-        st.markdown("---")  # separator between uploader and sample action
+        st.markdown("---") 
     
-        # Sample CSV (below)
+        # ---------------- Function to upload sample CSV ----------------
+        
         if st.button("Try with Sample CSV"):
             df = pd.read_csv(sample_csv_url)
     
@@ -121,9 +126,8 @@ with tab2:
     st.subheader("🧩 System Workflow")
     st.markdown("""    This section explains how the sentiment analyser system works internally.""")
 
-    # -----------------------------
-    # WORKFLOW STEPS
-    # -----------------------------
+    # ---------------- Workflow Steps  ----------------
+    
     with st.expander("Step 1 – Text Preprocessing"):
         st.markdown("""
         - Text is converted to lowercase to ensure consistency.
