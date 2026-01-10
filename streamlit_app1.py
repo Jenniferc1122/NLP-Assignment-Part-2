@@ -145,8 +145,8 @@ with tab2:
 
     with st.expander("Step 3 – Data Splitting"):
         st.markdown("""
-        - 30% of the data is used for training.
-        - 70% of the data is used for testing.
+        - 70% of the data is used for training.
+        - 30% of the data is used for testing.
         """)
 
     with st.expander("Step 4 – Model Training and Hyperparameter Tuning"):
