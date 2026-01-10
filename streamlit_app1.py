@@ -109,7 +109,7 @@ with tab1:
                 st.success("Sample file analysed successfully!")
                 st.dataframe(df[['review_text', 'prediction']].head(10))
 
-with tab 2:
+with tab2:
     st.subheader("🧩 System Workflow")
     st.markdown("""    This section explains how the sentiment analyser system works internally.""")
 
