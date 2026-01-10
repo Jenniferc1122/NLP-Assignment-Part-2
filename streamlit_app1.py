@@ -35,8 +35,15 @@ f1_score_value = load_metrics()
 
 # ---------------- Preprocessing ----------------
 def preprocess_text(text):
+    # convert to lowercase
     text = text.lower()
+    # convert emojis to text
+    text = emoji.demojize(text, delimiters=(" ", " "))
+    # replace underscores in emoji text with spaces
+    text = text.replace("_", " ")
+    # remove punctuation & special characters
     text = re.sub(r'[^a-z_\s]', '', text)
+    # remove extra whitespace
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
@@ -152,6 +159,17 @@ with tab2:
     with st.expander("Step 6 – Model Saving"):
         st.markdown("""
         - The best performing model is saved using Joblib for streamlit integration.
+        """)
+
+    with st.expander("⚠️ Limitations and Future Improvements"):
+        st.markdown("""
+        Current Limitations
+        - Unable to predict sentiment of all emojis due to the limited emoji content in the training data.
+        - Sarcasm detection.
+        - Field specific, weaker sentiment prediction when it is used to predict sentiment in other field.
+
+        Future Improvement
+        - Explore Deep Learning models to improve sentiment prediction performance.
         """)
 
 
