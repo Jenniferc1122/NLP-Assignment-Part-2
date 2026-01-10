@@ -59,48 +59,71 @@ st.header("🎮 Sentiment Analysis for Gaming Reviews")
 
 sample_csv_url = "https://raw.githubusercontent.com/Jenniferc1122/NLP-Assignment-Part-2/refs/heads/master/forsample.csv"
 
-st.subheader("📊 Model Performance")
+tab1, tab2 = st.tabs([
+    "✍️ Sentiment Analyser",
+    "📖 System Workflow")]
 
-st.metric(
-    label="F1 Score",
-    value=f"{f1_score_value * 100:.2f}%"
-)
+with tab1:
+    st.subheader("📊 Model Performance")
+    
+    st.metric(
+        label="F1 Score",
+        value=f"{f1_score_value * 100:.2f}%"
+    )
+    
+    with st.expander("✍️ Input Review"):
+        user_input = st.text_area("Enter your review:")
+        if user_input:
+            clean_text = preprocess_text(user_input)
+            pred = model.predict([clean_text])[0]
+            st.success(f"Predicted Sentiment: **{label_map[pred]}**")
+    
+    with st.expander("📂 Analyse CSV"):
+        st.markdown("### Try a sample or upload your own CSV")
+        # Uploader (top)
+        uploaded_file = st.file_uploader("Upload CSV", type="csv")
+        if uploaded_file:
+            df = pd.read_csv(uploaded_file)
+    
+            if 'review_text' not in df.columns:
+                st.error("CSV must contain 'review_text' column")
+            else:
+                df['clean_review'] = df['review_text'].astype(str).apply(preprocess_text)
+                preds = model.predict(df['clean_review'])
+                df['prediction'] = [label_map[p] for p in preds]
+    
+                st.dataframe(df[['review_text', 'prediction']].head(10))
+    
+        st.markdown("---")  # separator between uploader and sample action
+    
+        # Sample CSV (below)
+        if st.button("Try with Sample CSV"):
+            df = pd.read_csv(sample_csv_url)
+    
+            if 'review_text' not in df.columns:
+                st.error("Sample CSV must contain 'review_text' column")
+            else:
+                df['clean_review'] = df['review_text'].astype(str).apply(preprocess_text)
+                preds = model.predict(df['clean_review'])
+                df['prediction'] = [label_map[p] for p in preds]
+                st.success("Sample file analysed successfully!")
+                st.dataframe(df[['review_text', 'prediction']].head(10))
 
-with st.expander("✍️ Input Review"):
-    user_input = st.text_area("Enter your review:")
-    if user_input:
-        clean_text = preprocess_text(user_input)
-        pred = model.predict([clean_text])[0]
-        st.success(f"Predicted Sentiment: **{label_map[pred]}**")
+with tab 2:
+    st.subheader("🧩 System Workflow")
+    st.markdown("""    This section explains how the sentiment analyser system works internally.""")
 
-with st.expander("📂 Analyse CSV"):
-    st.markdown("### Try a sample or upload your own CSV")
-    # Uploader (top)
-    uploaded_file = st.file_uploader("Upload CSV", type="csv")
-    if uploaded_file:
-        df = pd.read_csv(uploaded_file)
+    # -----------------------------
+    # WORKFLOW STEPS
+    # -----------------------------
+    with st.expander("Step 1 – Data Preprocessing"):
+        st.markdown("""
+        - Raw corpus text is cleaned and normalised.
+        - Text is converted to lowercase to ensure consistency.
+        - The corpus is tokenised into individual words.
+        - A vocabulary of valid words is created.
+        - Word frequency statistics are computed.
+        - Bigram frequencies are generated to capture contextual patterns.
+        """)
 
-        if 'review_text' not in df.columns:
-            st.error("CSV must contain 'review_text' column")
-        else:
-            df['clean_review'] = df['review_text'].astype(str).apply(preprocess_text)
-            preds = model.predict(df['clean_review'])
-            df['prediction'] = [label_map[p] for p in preds]
-
-            st.dataframe(df[['review_text', 'prediction']].head(10))
-
-    st.markdown("---")  # separator between uploader and sample action
-
-    # Sample CSV (below)
-    if st.button("Try with Sample CSV"):
-        df = pd.read_csv(sample_csv_url)
-
-        if 'review_text' not in df.columns:
-            st.error("Sample CSV must contain 'review_text' column")
-        else:
-            df['clean_review'] = df['review_text'].astype(str).apply(preprocess_text)
-            preds = model.predict(df['clean_review'])
-            df['prediction'] = [label_map[p] for p in preds]
-            st.success("Sample file analysed successfully!")
-            st.dataframe(df[['review_text', 'prediction']].head(10))
 
