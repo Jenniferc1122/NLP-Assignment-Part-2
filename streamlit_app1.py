@@ -166,15 +166,17 @@ with tab2:
         - The best performing model is saved using Joblib for streamlit integration.
         """)
 
-    with st.expander("⚠️ Limitations and Future Improvements"):
+    with st.expander("⚠️ System Limitations"):
         st.markdown("""
-        **Current Limitations**
+        Current Limitations
         - Unable to predict sentiment of all emojis due to the limited emoji content in the training data.
         - Sarcasm detection.
         - Field specific, weaker sentiment prediction when it is used to predict sentiment in other field.
         - Only applicable to reviews in English.
+        """)
 
-        **Future Improvement**
+    with st.expander("🚀 Future Improvements"):
+        st.markdown(""" 
         - Explore Deep Learning models to improve sentiment prediction performance.
         """)
 
