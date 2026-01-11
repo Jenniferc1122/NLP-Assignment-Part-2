@@ -173,6 +173,7 @@ with tab2:
         - Sarcasm detection.
         - Field specific, weaker sentiment prediction when it is used to predict sentiment in other field.
         - Only applicable to reviews in English.
+        - This model is static.
         """)
 
     with st.expander("🚀 Future Improvements"):
