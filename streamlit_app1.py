@@ -178,6 +178,7 @@ with tab2:
     with st.expander("🚀 Future Improvements"):
         st.markdown(""" 
         - Explore Deep Learning models to improve sentiment prediction performance.
+        - Enhance the preprocessing step with language translation fucntion (Cross Language Sentiment Analysis)
         """)
 
 
